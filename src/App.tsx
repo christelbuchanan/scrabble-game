@@ -13,7 +13,7 @@ import {
   calculateWordScore, 
   getFormedWords 
 } from './utils/gameUtils';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, Heart } from 'lucide-react';
 
 function App() {
   const [gameState, setGameState] = useState<GameState>(initializeGame(2));
@@ -230,7 +230,7 @@ function App() {
   const currentPlayer = gameState.players[gameState.currentPlayerIndex];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 to-amber-100 p-4">
+    <div className="min-h-screen bg-gradient-to-b from-amber-50 to-amber-100 p-4 flex flex-col">
       <header className="text-center mb-6">
         <h1 className="text-4xl font-bold text-amber-800 flex items-center justify-center gap-2">
           <BookOpen className="text-amber-600" />
@@ -249,7 +249,7 @@ function App() {
         </div>
       )}
       
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 flex-grow">
         <div className="lg:col-span-1 order-2 lg:order-1">
           <PlayerInfo 
             players={gameState.players} 
@@ -292,6 +292,12 @@ function App() {
           </div>
         </div>
       </div>
+      
+      <footer className="mt-8 py-4 text-center text-amber-700 border-t border-amber-200">
+        <p className="flex items-center justify-center gap-1">
+          Made with love <Heart className="text-red-500 fill-red-500 h-5 w-5" /> using <a href="https://chatandbuild.com" target="_blank" rel="noopener noreferrer" className="text-amber-800 hover:underline font-medium">chatandbuild.com</a>
+        </p>
+      </footer>
       
       <RulesModal 
         isOpen={showRulesModal} 
